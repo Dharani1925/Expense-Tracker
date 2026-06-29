@@ -336,8 +336,8 @@ const Layout = ({ onLogout  , user}) => {
                   })}
                 </p>
               </div>
-              <div className={styles.statCards.iconContainer("teal")}>
-                <DollarSign className={styles.statCards.icon("teal")} />
+              <div className={styles.statCards.iconContainer("orange")}>
+                <DollarSign className={styles.statCards.icon("orange")} />
               </div>
             </div>
             <p className={styles.statCards.cardFooter}>

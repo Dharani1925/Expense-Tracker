@@ -132,7 +132,7 @@ const Sidebar = ({user , isCollapsed,setIsCollapsed}) => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -10 }}
                         >
-                            <h2 className="text-sm font-bold text-gray-800 truncate">
+                            <h2 className="text-sm font-bold text-slate-100 truncate">
                                 {username}
                             </h2>
                             <p className="text-xs text-gray-500 truncate">{email}</p>
@@ -156,7 +156,7 @@ const Sidebar = ({user , isCollapsed,setIsCollapsed}) => {
                 <Link className={cn(
                     sidebarStyles.footerLink.base,
                     isCollapsed && sidebarStyles.footerLink.collapsed,
-                )} to ="https://www.hexagondigitalservices.com/contact"
+                )} to =""
                 >
                     <HelpCircle size={20} className='text-gray-500 ' />
                     {!isCollapsed && <span>Support</span> }
@@ -213,7 +213,7 @@ const Sidebar = ({user , isCollapsed,setIsCollapsed}) => {
                             {initial}
                         </div>
                         <div>
-                            <h2 className='text-lg font-bold text-gray-800'>
+                            <h2 className='text-lg font-bold text-slate-100'>
                                 {username}
                             </h2>
                             <p className='text-sm text-gray-500'>{email}</p>
@@ -249,7 +249,7 @@ const Sidebar = ({user , isCollapsed,setIsCollapsed}) => {
                         </ul>
                 </div>
                 <div className={sidebarStyles.mobileFooter} >
-                <Link onClick={() =>  setMobileOpen(false)} to ="https://www.hexagondigitalservices.com/contact" 
+                <Link onClick={() =>  setMobileOpen(false)} to ="" 
                     className= {sidebarStyles.mobileFooterLink}  >
                     <HelpCircle size={20} className='text-gray-500'/>
                     <span>Support</span>

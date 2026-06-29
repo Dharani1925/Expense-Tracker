@@ -67,14 +67,14 @@ export const INCOME_CATEGORY_ICONS = {
 };
 
 export const EXPENSE_CATEGORY_ICONS = {
-  Food: <Utensils className="w-5 h-5 text-orange-500" />,
-  Housing: <Home className="w-5 h-5 text-orange-500" />,
-  Transport: <Car className="w-5 h-5 text-orange-500" />,
-  Shopping: <ShoppingBag className="w-5 h-5 text-orange-500" />,
-  Entertainment: <Film className="w-5 h-5 text-orange-500" />,
-  Utilities: <Wifi className="w-5 h-5 text-orange-500" />,
-  Healthcare: <Heart className="w-5 h-5 text-orange-500" />,
-  Other: <ShoppingCart className="w-5 h-5 text-orange-500" />,
+  Food: <Utensils className="w-5 h-5 text-green-500" />,
+  Housing: <Home className="w-5 h-5 text-green-500" />,
+  Transport: <Car className="w-5 h-5 text-green-500" />,
+  Shopping: <ShoppingBag className="w-5 h-5 text-green-500" />,
+  Entertainment: <Film className="w-5 h-5 text-green-500" />,
+  Utilities: <Wifi className="w-5 h-5 text-green-500" />,
+  Healthcare: <Heart className="w-5 h-5 text-green-500" />,
+  Other: <ShoppingCart className="w-5 h-5 text-green-500" />,
 };
 
 export const colorClasses = {

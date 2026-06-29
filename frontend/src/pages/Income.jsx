@@ -101,12 +101,14 @@ const IncomeChart = ({ chartData, timeFrame, timeFrameRange }) => (
             tickFormatter={(value) => `$${value.toLocaleString()}`}
           />
           <Tooltip
-            formatter={(value) => [
-              `$${Math.round(value).toLocaleString()}`,
-              "Income",
-            ]}
-            contentStyle={styles.tooltipContent}
-          />
+              formatter={(value) => [
+                `$${Math.round(value).toLocaleString()}`,
+                "Income",
+              ]}
+              contentStyle={styles.tooltipContent}
+              labelStyle={{ color: "#f8fafc" }}
+              itemStyle={{ color: "#f8fafc" }}
+            />
           <Bar
             dataKey="income"
             name="Income"

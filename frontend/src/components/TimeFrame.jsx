@@ -14,7 +14,7 @@ const TimeFrameSelector = ({
   }[color];
   
   const styleClass = {
-    default: "flex gap-2 bg-white p-1 -mx-11 lg:-mx-0 md:-mx-0 rounded-xl border border-gray-200",
+    default: "flex gap-2 bg-slate-900 p-1 -mx-11 lg:-mx-0 md:-mx-0 rounded-xl border border-slate-700",
     minimal: "flex gap-2"
   }[style];
   
@@ -27,7 +27,7 @@ const TimeFrameSelector = ({
           className={`px-2  py-2 text-sm rounded-lg transition-all ${
             timeFrame === frame 
               ? `${colorClass} text-white` 
-              : 'text-gray-600 hover:bg-gray-100'
+              :  'text-slate-300 hover:bg-slate-800'
           }`}
         >
           {frame.charAt(0).toUpperCase() + frame.slice(1)}

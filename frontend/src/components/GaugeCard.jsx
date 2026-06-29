@@ -1,5 +1,5 @@
 import React from "react";
-import { 
+import {
   ResponsiveContainer,
   RadialBarChart,
   RadialBar,
@@ -15,26 +15,28 @@ const GaugeCard = ({
   const { name = "Metric", value = 0, max = 100 } = gauge;
   const isNegative = value < 0;
   const absValue = Math.abs(value);
-  
+
   // For negative values, we'll show the absolute value in the chart but indicate it's negative in text
   const chartValue = isNegative ? absValue : value;
   const percentage = Math.min((absValue / max) * 100, 100);
 
-  // Determine colors based on whether value is negative
-  const gradientStart = isNegative ? '#ef4444' : (colorInfo.gradientStart || '#00C49F');
-  const gradientEnd = isNegative ? '#dc2626' : (colorInfo.gradientEnd || '#0088FE');
-  const textColor = isNegative ? 'text-red-600' : (colorInfo.text || 'text-gray-800');
-  const percentColor = isNegative ? 'text-red-500' : 'text-gray-500';
+  // Theme colors
+  const gradientStart = isNegative ? "#ef4444" : (colorInfo.gradientStart || "#3b82f6");
+  const gradientEnd = isNegative ? "#dc2626" : (colorInfo.gradientEnd || "#8b5cf6");
+
+  const textColor = isNegative ? "text-red-400" : (colorInfo.text || "text-slate-100");
+  const percentColor = isNegative ? "text-red-400" : "text-slate-400";
 
   return (
-    <div className="bg-white rounded-xl p-5 -mx-3 lg:-mx-0 md:-mx-5 shadow-sm flex flex-col items-center border border-gray-100">
+    <div className="bg-slate-900 rounded-xl p-5 -mx-3 lg:-mx-0 md:-mx-5 shadow-sm flex flex-col items-center border border-slate-700">
       <h3 className={`text-lg font-semibold mb-4 ${textColor}`}>
         {name}
       </h3>
+
       <div className="w-full h-48">
         <ResponsiveContainer>
           <RadialBarChart
-            data={[{...gauge, value: chartValue}]}
+            data={[{ ...gauge, value: chartValue }]}
             cx="50%"
             cy="50%"
             startAngle={180}
@@ -52,38 +54,41 @@ const GaugeCard = ({
 
             <RadialBar
               minAngle={15}
-              background={{ fill: '#f3f4f6' }}
+              background={{ fill: "#334155" }}
               dataKey="value"
               cornerRadius="50%"
               fill={`url(#${name}Gradient)`}
             />
 
-            <text 
-              x="50%" 
-              y="50%" 
-              textAnchor="middle" 
+            <text
+              x="50%"
+              y="50%"
+              textAnchor="middle"
               dominantBaseline="middle"
-              className={`text-2xl font-bold ${textColor}`}
+              fill={isNegative ? "#f87171" : "#ffffff"}
+              className="text-2xl font-bold"
             >
-              {isNegative ? '-' : ''}${Math.round(absValue).toLocaleString()}
-            </text>
-            <text 
-              x="50%" 
-              y="65%" 
-              textAnchor="middle" 
-              dominantBaseline="middle"
-              className={`text-sm ${percentColor}`}
-            >
-              {Math.round(percentage)}%
+              {isNegative ? "-" : ""}${Math.round(absValue).toLocaleString()}
             </text>
 
+            <text
+            x="50%"
+            y="65%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill={isNegative ? "#f87171" : "#94a3b8"}
+            className="text-sm"
+          >
+            {Math.round(percentage)}%
+          </text>
+
             <defs>
-              <linearGradient 
-              id={`${name}Gradient`} 
-              x1="0" 
-              y1="0" 
-              x2="0" 
-              y2="1"
+              <linearGradient
+                id={`${name}Gradient`}
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
               >
                 <stop offset="0%" stopColor={gradientStart} />
                 <stop offset="100%" stopColor={gradientEnd} />
@@ -92,13 +97,15 @@ const GaugeCard = ({
           </RadialBarChart>
         </ResponsiveContainer>
       </div>
+
       <div className="text-center mt-3">
         {isNegative && highlightNegative && (
-          <p className="text-sm text-red-600 font-semibold mb-1">
+          <p className="text-sm text-red-400 font-semibold mb-1">
             Negative savings
           </p>
         )}
-        <p className="text-sm text-gray-500">
+
+        <p className="text-sm text-slate-400">
           {timeFrameLabel} data
         </p>
       </div>
@@ -109,4 +116,115 @@ const GaugeCard = ({
 export default GaugeCard;
 
 
-// for Gauge UI like speedometer
+// import React from "react";
+// import { 
+//   ResponsiveContainer,
+//   RadialBarChart,
+//   RadialBar,
+//   PolarAngleAxis
+// } from "recharts";
+
+// const GaugeCard = ({
+//   gauge = {},
+//   colorInfo = {},
+//   timeFrameLabel = "",
+//   highlightNegative = false,
+// }) => {
+//   const { name = "Metric", value = 0, max = 100 } = gauge;
+//   const isNegative = value < 0;
+//   const absValue = Math.abs(value);
+  
+//   // For negative values, we'll show the absolute value in the chart but indicate it's negative in text
+//   const chartValue = isNegative ? absValue : value;
+//   const percentage = Math.min((absValue / max) * 100, 100);
+
+//   // Determine colors based on whether value is negative
+//   const gradientStart = isNegative ? '#ef4444' : (colorInfo.gradientStart || '#00C49F');
+//   const gradientEnd = isNegative ? '#dc2626' : (colorInfo.gradientEnd || '#0088FE');
+//   const textColor = isNegative ? 'text-red-600' : (colorInfo.text || 'text-gray-800');
+//   const percentColor = isNegative ? 'text-red-500' : 'text-gray-500';
+
+//   return (
+//     <div className="bg-white rounded-xl p-5 -mx-3 lg:-mx-0 md:-mx-5 shadow-sm flex flex-col items-center border border-gray-100">
+//       <h3 className={`text-lg font-semibold mb-4 ${textColor}`}>
+//         {name}
+//       </h3>
+//       <div className="w-full h-48">
+//         <ResponsiveContainer>
+//           <RadialBarChart
+//             data={[{...gauge, value: chartValue}]}
+//             cx="50%"
+//             cy="50%"
+//             startAngle={180}
+//             endAngle={0}
+//             innerRadius="70%"
+//             outerRadius="100%"
+//           >
+//             <PolarAngleAxis
+//               type="number"
+//               domain={[0, max]}
+//               angleAxisId={0}
+//               tick={false}
+//               allowDataOverflow
+//             />
+
+//             <RadialBar
+//               minAngle={15}
+//               background={{ fill: '#f3f4f6' }}
+//               dataKey="value"
+//               cornerRadius="50%"
+//               fill={`url(#${name}Gradient)`}
+//             />
+
+//             <text 
+//               x="50%" 
+//               y="50%" 
+//               textAnchor="middle" 
+//               dominantBaseline="middle"
+//               className={`text-2xl font-bold ${textColor}`}
+//             >
+//               {isNegative ? '-' : ''}${Math.round(absValue).toLocaleString()}
+//             </text>
+//             <text 
+//               x="50%" 
+//               y="65%" 
+//               textAnchor="middle" 
+//               dominantBaseline="middle"
+//               className={`text-sm ${percentColor}`}
+//             >
+//               {Math.round(percentage)}%
+//             </text>
+
+//             <defs>
+//               <linearGradient 
+//               id={`${name}Gradient`} 
+//               x1="0" 
+//               y1="0" 
+//               x2="0" 
+//               y2="1"
+//               >
+//                 <stop offset="0%" stopColor={gradientStart} />
+//                 <stop offset="100%" stopColor={gradientEnd} />
+//               </linearGradient>
+//             </defs>
+//           </RadialBarChart>
+//         </ResponsiveContainer>
+//       </div>
+//       <div className="text-center mt-3">
+//         {isNegative && highlightNegative && (
+//           <p className="text-sm text-red-600 font-semibold mb-1">
+//             Negative savings
+//           </p>
+//         )}
+//         <p className="text-sm text-gray-500">
+//           {timeFrameLabel} data
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GaugeCard;
+
+
+// // for Gauge UI like speedometer
