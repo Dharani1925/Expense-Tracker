@@ -4,7 +4,7 @@ import { useNavigate ,Link } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Eye, EyeOff,  Lock, Mail, User } from 'lucide-react';
 
-const Signup = ({API_URL = "http://localhost:4000",onSignup}) => {
+const Signup = ({API_URL = "https://expense-tracker-backend-eodp.onrender.com",onSignup}) => {
     
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ const navigate = useNavigate();
 // to fetch profile
 const fetchProfile = async (token) => {
     if(!token) return null;
-    const res = await axios.get(`${API_URL} /api/user/me`,{
+    const res = await axios.get(`${API_URL}/api/user/me`,{
       headers : {Authorization : `Bearer ${token}`} , 
     });
     return res.data;

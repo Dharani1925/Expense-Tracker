@@ -6,7 +6,7 @@ import { data, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {ToastContainer, toast} from 'react-toastify';
 
-const BASE_URL ="http://localhost:4000/api";
+const BASE_URL ="https://expense-tracker-backend-eodp.onrender.com/api";
 
 Modal.setAppElement('#root');
 // Move PasswordInput component outside of ProfilePage to prevent recreation on every render

@@ -23,7 +23,7 @@ import {
 import { Outlet, data } from 'react-router-dom';
 import axios from 'axios';
 
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = "https://expense-tracker-backend-eodp.onrender.com/api";
 const CATEGORY_ICONS = {
   Food: <Utensils className="w-4 h-4" />,
   Housing: <Home className="w-4 h-4" />,
